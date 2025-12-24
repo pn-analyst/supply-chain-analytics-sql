@@ -82,7 +82,7 @@ The top‑ordered items are:
 | 1668545    | 101    |
 
 
-Key takeaway:  
+**Key takeaway:**  
 Product 1689547 is the highest‑demand SKU with 192 orders, significantly ahead of the rest.
 
 These top products should be prioritized for:
@@ -147,7 +147,7 @@ This is significantly higher than other routes such as:
 - PORT05 → PORT09 at $2.88
 - PORT09 → PORT06 at $2.84
 
-Key takeaway:  
+**Key takeaway:**  
 PORT03 stands out as a high‑cost origin point. If this lane is frequently used, it may be a strong candidate for:
 
 - Carrier renegotiation
@@ -194,7 +194,7 @@ GROUP BY month
 ORDER BY month;
 
 
-### 📊 Insight Summary  
+📊 Insight Summary  
 
 This query aggregates total orders by **year–month**, revealing clear fluctuations in demand over time.
 
@@ -224,6 +224,58 @@ Understanding these trends helps teams plan inventory, staffing, and production 
 
 - Image: [images/query3_monthly_order_trend.JPG](images/query3_monthly_order_trend.JPG)
 - SQL: [sql/query3_monthly_order_trend.sql](sql/query3_monthly_order_trend.sql)
+
+
+### **Query 4 — Top Customers by Order Volume**
+
+📌 Business Question
+
+Which customers place the most orders, and how significant is their contribution to total demand?
+
+🎯 Purpose  
+
+Identifying top customers helps businesses:
+
+- Prioritize key accounts  
+- Tailor service levels  
+- Forecast demand more accurately  
+- Strengthen customer relationship strategies  
+- Allocate resources to high‑value segments  
+
+💻 SQL Query  
+
+SELECT customer_id,
+       COUNT(*) AS total_orders
+FROM orders
+GROUP BY customer_id
+ORDER BY total_orders DESC
+LIMIT 10;
+
+📊 Insight Summary  
+This query ranks customers by total order count, revealing which accounts drive the highest demand.
+
+| Customer ID | Total Orders |
+|-------------|--------------|
+| CUST102     | 54           |
+| CUST087     | 49           |
+| CUST221     | 47           |
+| CUST144     | 45           |
+| CUST199     | 42           |
+
+**Key takeaway:**  
+A small group of customers contributes a disproportionately large share of total orders.  
+These high‑value customers are essential for revenue stability and should be prioritized for service, retention, and forecasting.
+
+📸 Screenshot
+
+![Top Customers by Order Volume](images/query4_top_customers.JPG)
+
+
+📁 File Locations
+
+- Image: [images/query4_top_customers.JPG](images/query4_top_customers.JPG)
+- SQL: [sql/query4_top_customers.sql](sql/query4_top_customers.sql)
+
 
 
 ---
