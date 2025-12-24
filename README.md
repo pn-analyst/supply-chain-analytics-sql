@@ -62,6 +62,7 @@ ORDER BY order_count DESC;
 
 
 📊 Insight Summary
+
 The results show a clear concentration of demand among a small group of products.
 The top‑ordered items are:
 
@@ -163,10 +164,66 @@ This insight supports targeted cost‑reduction initiatives in freight operation
 
 
 
-### **Query 3 — …**
+### **Query 3 — Monthly Order Volume Trend**
+
+
+📌 Business Question  
+How does order volume trend over time? Are there seasonal patterns or growth signals?
+
+🎯 Purpose  
+Understanding monthly order volume helps with:
+
+- Demand forecasting  
+- Inventory planning  
+- Capacity management  
+- Identifying seasonal peaks or dips  
+- Supporting long‑term supply chain strategy  
+
+---
+
+💻 SQL Query  
+
+SELECT strftime('%Y-%m', "order_date") AS month,
+       COUNT(*) AS order_count
+FROM orders
+GROUP BY month
+ORDER BY month;
+
+
+### 📊 Insight Summary  
+
+This query aggregates total orders by **year–month**, revealing clear fluctuations in demand over time.
+
+
+| Month     | Orders |
+|-----------|--------|
+| 2022-01   | 142    |
+| 2022-02   | 158    |
+| 2022-03   | 165    |
+| 2022-04   | 121    |
+| 2022-05   | 134    |
+
+**Key takeaway:**  
+
+There is a noticeable dip in April followed by a recovery in May.  
+
+This pattern may reflect seasonal demand shifts, promotional cycles, or operational constraints.  
+
+Understanding these trends helps teams plan inventory, staffing, and production more effectively.
+
+📸 Screenshot
+
+![Monthly Order Trend](images/query3_monthly_order_trend.JPG)
+
+
+📁 File Locations
+
+- Image: [images/query3_monthly_order_trend.JPG](images/query3_monthly_order_trend.JPG)
+- SQL: [sql/query3_monthly_order_trend.sql](sql/query3_monthly_order_trend.sql)
 
 
 ---
+
 
 ## 📁 Repository Structure
 
