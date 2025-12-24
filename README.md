@@ -180,27 +180,27 @@ supply-chain-analytics-sql/
 
 ├── data/
 
-      └── (original CSV files)
+│      └── (original CSV files)
 
 │
 
 ├── sql/
 
-      ├── query1_top_ordered_products.sql
+│      ├── query1_top_ordered_products.sql
 
-      ├── query2_freight_costs.sql
+│      ├── query2_freight_costs.sql
 
-      └── ... (additional SQL queries)
+│      └── ... (additional SQL queries)
 
 │
 
 └── images/
 
-      ├── query1_top_ordered_products.jpg
+       ├── query1_top_ordered_products.jpg
 
-      ├── query2_freight_costs.jpg
+       ├── query2_freight_costs.jpg
 
-      └── ... (screenshots for each query)
+       └── ... (screenshots for each query)
 
 
 
