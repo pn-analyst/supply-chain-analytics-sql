@@ -1,0 +1,7 @@
+SELECT
+    "Product ID" AS product_id,
+    SUM("Unit quantity") AS total_units_ordered
+FROM orders
+GROUP BY "Product ID"
+HAVING SUM("Unit quantity") < 50
+ORDER BY total_units_ordered ASC;
