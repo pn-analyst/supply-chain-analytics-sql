@@ -183,10 +183,9 @@ supply-chain-analytics-sql/
 │   └── ... (additional SQL queries)
 │
 └── images/
-    ├── query1_top_ordered_products.jpg
-    ├── query2_freight_costs.jpg
-    └── ... (screenshots for each query)
-
+├── query1_top_ordered_products.jpg
+├── query2_freight_costs.jpg
+└── ... (screenshots for each query)
 
 ---
 
