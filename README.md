@@ -34,6 +34,8 @@ Each query includes:
 - A screenshot of the output  
 - A summary of insights  
 
+---
+
 ### **Query 1 — Top Ordered Products**
 
 📌 Business Question
@@ -42,13 +44,14 @@ Which products are ordered the most across all customer orders?
 🎯 Purpose
 Identifying high‑volume products is essential for:
 
-Demand forecasting
-Inventory allocation
-Production planning
-Prioritizing critical SKUs
-Reducing the risk of stockouts
-
+- Demand forecasting
+- Inventory allocation
+- Production planning
+- Prioritizing critical SKUs
+- Reducing the risk of stockouts
+  
 This query highlights which products consistently drive the highest order volume.
+
 
 💻 SQL Query
 
@@ -57,39 +60,47 @@ FROM orders
 GROUP BY "Product ID"
 ORDER BY order_count DESC;
 
+
 📊 Insight Summary
 The results show a clear concentration of demand among a small group of products.
 The top‑ordered items are:
 
-Product ID	Orders
-1689547   192
-1677878   140
-1689548  	133
-1689546  	129
-1688571  	120
-1688629	  119
-1687346  	118
-1688575  	117
-1688589  	112
-1668545  	101
+| Product ID | Orders |
+|------------|--------|
+| 1689547    | 192    |
+| 1677878    | 140    |
+| 1689548    | 133    |
+| 1689546    | 129    |
+| 1688571    | 120    |
+| 1688629    | 119    |
+| 1687346    | 118    |
+| 1688575    | 117    |
+| 1688589    | 112    |
+| 1668545    | 101    |
+
 
 Key takeaway:  
 Product 1689547 is the highest‑demand SKU with 192 orders, significantly ahead of the rest.
+
 These top products should be prioritized for:
 
-Stock availability
-Production scheduling
-Safety stock planning
+- Stock availability
+- Production scheduling
+- Safety stock planning
 
 This insight supports more accurate demand forecasting and operational planning.
 
 📸 Screenshot
-images/query1_top_ordered_products.JPG
+
+![Top Ordered Products](images/query1_top_ordered_products.JPG)
 
 
 📁 File Locations
-/sql/query1_top_ordered_products.sql
-/images/query1_top_ordered_products.JPG
+
+- Image: [images/query1_top_ordered_products.JPG](images/query1_top_ordered_products.JPG)
+- SQL: [sql/query1_top_ordered_products.sql](sql/query1_top_ordered_products.sql)
+
+
 
 
 ### **Query 2 — Most Expensive Freight Routes …**
@@ -99,15 +110,17 @@ Which freight routes have the highest average transportation rate per unit?
 
 🎯 Purpose
 Freight rates vary significantly depending on origin, destination, carrier, and weight brackets.
+
 Identifying the most expensive lanes helps with:
 
-Cost‑to‑serve analysis
-Carrier negotiation
-Route optimization
-Identifying premium or inefficient lanes
-Strategic logistics planning
+- Cost‑to‑serve analysis
+- Carrier negotiation
+- Route optimization
+- Identifying premium or inefficient lanes
+- Strategic logistics planning
 
 This query calculates the average per‑unit freight rate for each origin–destination pair.
+
 
 💻 SQL Query
 
@@ -118,31 +131,36 @@ FROM freight_rates
 GROUP BY "orig_port_cd", "dest_port_cd"
 ORDER BY avg_rate DESC;
 
+
 📊 Insight Summary
 The results show that PORT03 → PORT09 is the most expensive freight lane, with an average rate of $9.98 per unit.
+
 This is significantly higher than other routes such as:
 
-PORT10 → PORT09 at $5.37
-PORT05 → PORT09 at $2.88
-PORT09 → PORT06 at $2.84
+- PORT10 → PORT09 at $5.37
+- PORT05 → PORT09 at $2.88
+- PORT09 → PORT06 at $2.84
 
 Key takeaway:  
 PORT03 stands out as a high‑cost origin point. If this lane is frequently used, it may be a strong candidate for:
 
-Carrier renegotiation
-Mode shifts (e.g., air → sea)
-Consolidation strategies
-Reviewing service-level requirements
+- Carrier renegotiation
+- Mode shifts (e.g., air → sea)
+- Consolidation strategies
+- Reviewing service-level requirements
 
 This insight supports targeted cost‑reduction initiatives in freight operations.
 
 📸 Screenshot
-images/query2_freight_costs.JPG
+
+![Freight Cost Analysis](images/query2_freight_costs.JPG)
 
 
 📁 File Locations
-/sql/query2_freight_costs.sql
-/images/query2_freight_costs.jpg
+
+- Image: [images/query2_freight_costs.JPG](images/query2_freight_costs.JPG)  
+- SQL: [sql/query2_freight_costs.sql](sql/query2_freight_costs.sql)
+
 
 
 ### **Query 3 — …**
