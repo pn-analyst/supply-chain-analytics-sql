@@ -172,33 +172,33 @@ This insight supports targeted cost‑reduction initiatives in freight operation
 
 
 supply-chain-analytics-sql/
-│
+
 
 ├── README.md
-│
+
 
 ├── supply_chain.db
-│
+
 
 ├── /data
 
-│   └── (original CSV files)
-│
+   └── (original CSV files)
+
 
 ├── /sql
 
-│   ├── query1_top_ordered_products.sql
+   ├── query1_top_ordered_products.sql
 
-│   ├── query2_*.sql
+   ├── query2_*.sql
 
-│   └── ...
-│
+   └── ...
+
 
 └── /images
 
-    ├── query1_top_ordered_products.png
+    ├── query1_top_ordered_products.jpg
     
-    ├── query2_*.png
+    ├── query2_*.jpg
     
     └── ...
 
