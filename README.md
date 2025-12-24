@@ -282,6 +282,71 @@ Identifying growth opportunities among mid‑tier customers
 - Image: [images/query4_top_customers.JPG](images/query4_top_customers.JPG)
 - SQL: [sql/query4_top_customers.sql](sql/query4_top_customers.sql)
 
+### **Query 5 — Top Products by Total Units Ordered**
+
+📌 Business Question  
+
+Which products drive the highest total unit volume, and how concentrated is demand across the product portfolio?
+
+🎯 Purpose  
+
+Understanding top‑volume products helps businesses:
+
+- Identify high‑impact SKUs  
+- Prioritize production and inventory planning  
+- Optimize logistics around high‑demand items  
+- Improve forecasting accuracy  
+- Allocate resources to products that generate the most throughput  
+
+💻 SQL Query
+
+SELECT 
+    "Product ID" AS product_id,
+    SUM("Unit quantity") AS total_units
+FROM orders
+GROUP BY "Product ID"
+ORDER BY total_units DESC
+LIMIT 10;
+
+📊 Insight Summary  
+Product demand is heavily concentrated among a small group of high‑volume SKUs.  
+**Product 1684862 leads with over 3.47 million units**, making it the single largest driver of operational throughput.  
+The next tier — products 1676592 (1.12M units), 1700569 (904k units), and 1664051 (873k units) — also represent substantial demand.
+
+All top 10 products exceed 650k units, indicating a strong and consistent pull across multiple product lines.
+
+Product Performance Table
+
+| Product ID | Total Units |
+|------------|-------------|
+| 1684862    | 3,470,409   |
+| 1676592    | 1,119,252   |
+| 1700569    | 904,493     |
+| 1664051    | 873,011     |
+| 1667927    | 814,076     |
+| 1700140    | 811,381     |
+| 1683560    | 772,283     |
+| 1666524    | 670,437     |
+| 1700130    | 658,352     |
+| 1700143    | 654,556     |
+
+**Key takeaway:**  
+Product **1684862** is the dominant SKU, but demand is broadly distributed across several high‑volume products.  
+This creates opportunities for:
+
+- Prioritizing inventory and production capacity  
+- Strengthening supply continuity for top SKUs  
+- Optimizing freight and warehouse operations around high‑volume items  
+- Identifying mid‑tier products with growth potential  
+
+📸 Screenshot  
+
+![Top Products by Total Units Ordered](images/query5_top_products.JPG)
+
+
+📁 File Locations  
+- Image: [images/query5_top_products.JPG](images/query5_top_products.JPG)
+- SQL: [sql/query5_top_products.sql](sql/query5_top_products.sql)
 
 
 ---
