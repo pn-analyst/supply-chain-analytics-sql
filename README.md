@@ -309,6 +309,7 @@ ORDER BY total_units DESC
 LIMIT 10;
 
 📊 Insight Summary  
+
 Product demand is heavily concentrated among a small group of high‑volume SKUs.  
 **Product 1684862 leads with over 3.47 million units**, making it the single largest driver of operational throughput.  
 The next tier — products 1676592 (1.12M units), 1700569 (904k units), and 1664051 (873k units) — also represent substantial demand.
@@ -347,6 +348,187 @@ This creates opportunities for:
 📁 File Locations  
 - Image: [images/query5_top_products.JPG](images/query5_top_products.JPG)
 - SQL: [sql/query5_top_products.sql](sql/query5_top_products.sql)
+
+### **Query 6 — Top Origin Ports by Shipment Volume**
+
+📌 Business Question  
+
+Which origin ports handle the highest shipment volume, and how concentrated is outbound demand across the network?
+
+🎯 Purpose  
+
+Understanding shipment volume by origin port helps businesses:
+
+- Identify high‑throughput logistics hubs  
+- Optimize transportation and routing strategies  
+- Allocate carrier capacity more effectively  
+- Detect potential bottlenecks or over‑utilized ports  
+- Improve overall supply chain network design  
+
+💻 SQL Query
+
+SELECT 
+    "Origin Port" AS origin_port,
+    SUM("Unit quantity") AS total_units
+FROM orders
+GROUP BY "Origin Port"
+ORDER BY total_units DESC
+LIMIT 10;
+
+📊 Insight Summary  
+
+Shipment volume is heavily concentrated in a single origin port.  
+**PORT04 dominates with 29.26 million units shipped**, making it the primary outbound hub in the network.  
+The next ports — PORT09 (245k units) and PORT05 (348 units) — show significantly lower activity, indicating a highly centralized shipping structure.
+
+This distribution suggests that PORT04 is the critical node for outbound operations, while other ports play minimal roles in comparison.
+
+Top Origin Ports by Shipment Volume
+
+| Origin Port | Total Units |
+|-------------|-------------|
+| PORT04      | 29,267,834  |
+| PORT09      | 245,133     |
+| PORT05      | 348         |
+
+**Key takeaway:**  
+Outbound shipments are overwhelmingly concentrated at **PORT04**, making it the primary logistics hub.  
+This centralization highlights opportunities to:
+
+- Strengthen capacity and infrastructure at PORT04  
+- Evaluate risk exposure due to single‑hub dependency  
+- Explore balancing strategies across secondary ports  
+- Improve resilience by diversifying outbound volume  
+
+📸 Screenshot  
+
+![Top Origin Ports by Shipment Volume](images/query6_top_origin_ports.JPG)
+
+
+📁 File Locations  
+- Image: [images/query6_top_origin_ports.JPG](images/query6_top_origin_ports.JPG)  
+- SQL: [sql/query6_top_origin_ports.sql](sql/query6_top_origin_ports.sql)
+
+
+### **Query 7 — Slow‑Moving Products (Low Velocity SKUs)**
+
+📌 Business Question  
+
+Which products have the lowest total unit movement, and which SKUs may pose an overstock or low‑turnover risk?
+
+🎯 Purpose  
+
+Identifying slow‑moving products is essential for effective inventory management.  
+Low‑velocity SKUs often lead to:
+
+- Excess inventory and higher carrying costs  
+- Inefficient warehouse space usage  
+- Reduced cash flow  
+- Poor product mix performance  
+- Need for SKU rationalization or promotional clearance  
+
+This analysis helps highlight products that require closer monitoring or strategic action.
+
+💻 SQL Query
+
+SELECT 
+    "Product ID" AS product_id,
+    SUM("Unit quantity") AS total_units
+FROM orders
+GROUP BY "Product ID"
+ORDER BY total_units ASC
+LIMIT 10;
+
+📊 Insight Summary  
+
+The results show a group of products with **very low total unit movement**, ranging from 239 to 258 units.  
+These SKUs represent the slowest‑moving items in the dataset and may indicate:
+
+- Low customer demand  
+- Overstock risk  
+- Potential candidates for discontinuation  
+- Items that may require promotional activity to clear inventory  
+
+Monitoring these products helps prevent unnecessary buildup and supports better inventory planning.
+
+Slow‑Moving Products (Lowest Total Units)
+
+| Product ID | Total Units |
+|------------|-------------|
+| 1685321    | 239         |
+| 1637055    | 240         |
+| 1679991    | 243         |
+| 1683293    | 248         |
+| 1656944    | 251         |
+| 1666396    | 251         |
+| 1685213    | 254         |
+| 1681376    | 256         |
+| 1684497    | 257         |
+| 1656347    | 258         |
+
+**Key takeaway:**  
+These low‑velocity SKUs pose a potential inventory risk.  
+By identifying them early, businesses can:
+
+- Reduce excess stock  
+- Improve warehouse efficiency  
+- Adjust purchasing and replenishment  
+- Strengthen overall inventory health  
+
+📸 Screenshot  
+
+![Slow‑Moving Products](images/query7_slow_moving_products.JPG)
+
+
+📁 File Locations  
+- Image: [images/query7_slow_moving_products.JPG](images/query7_slow_moving_products.JPG)  
+- SQL: [sql/query7_slow_moving_products.sql](sql/query7_slow_moving_products.sql)
+
+### **Query 8 — Inventory Stockout Risk (Low Stock Products)**
+
+📌 Business Question
+
+Are there any products at risk of stockout based on low total unit movement?
+
+🎯 Purpose 
+
+Identifying stockout risk helps businesses:
+
+- Prevent lost sales  
+- Improve customer satisfaction  
+- Optimize replenishment cycles  
+- Strengthen inventory planning  
+
+💻 SQL Query
+
+SELECT
+    "Product ID" AS product_id,
+    SUM("Unit quantity") AS total_units_ordered
+FROM orders
+GROUP BY "Product ID"
+HAVING SUM("Unit quantity") < 50
+ORDER BY total_units_ordered ASC;
+
+📊 Insight Summary  
+
+This query checks for products with fewer than 50 units ordered across all transactions — a proxy for potential stockout risk.  
+**Result: No products met this condition.**
+
+This indicates that all SKUs in the dataset have sufficient movement and are not at immediate risk of stockout.
+
+**Key takeaway:**  
+The current product mix shows healthy inventory coverage.  
+No SKUs fall below the critical threshold, suggesting effective demand planning and replenishment.
+
+📸 Screenshot  
+
+![Inventory Stockout Risk — No Low Stock Products](images/query8_inventory_stockout_risk.JPG)
+
+
+📁 File Locations  
+- Image: [images/query8_inventory_stockout_risk.JPG](images/query8_inventory_stockout_risk.JPG)
+- SQL: [sql/query8_inventory_stockout_risk.sql](sql/query8_inventory_stockout_risk.sql)
+
 
 
 ---
