@@ -1,6 +1,6 @@
-SELECT customer_id,
+SELECT Customer,
        COUNT(*) AS total_orders
 FROM orders
-GROUP BY customer_id
+GROUP BY Customer
 ORDER BY total_orders DESC
 LIMIT 10;
