@@ -39,9 +39,11 @@ Each query includes:
 ### **Query 1 — Top Ordered Products**
 
 📌 Business Question
+
 Which products are ordered the most across all customer orders?
 
 🎯 Purpose
+
 Identifying high‑volume products is essential for:
 
 - Demand forecasting
@@ -107,9 +109,11 @@ This insight supports more accurate demand forecasting and operational planning.
 ### **Query 2 — Most Expensive Freight Routes …**
 
 📌 Business Question
+
 Which freight routes have the highest average transportation rate per unit?
 
 🎯 Purpose
+
 Freight rates vary significantly depending on origin, destination, carrier, and weight brackets.
 
 Identifying the most expensive lanes helps with:
@@ -134,6 +138,7 @@ ORDER BY avg_rate DESC;
 
 
 📊 Insight Summary
+
 The results show that PORT03 → PORT09 is the most expensive freight lane, with an average rate of $9.98 per unit.
 
 This is significantly higher than other routes such as:
@@ -179,7 +184,6 @@ Understanding monthly order volume helps with:
 - Identifying seasonal peaks or dips  
 - Supporting long‑term supply chain strategy  
 
----
 
 💻 SQL Query  
 
