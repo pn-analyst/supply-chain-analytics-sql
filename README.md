@@ -210,9 +210,7 @@ This query aggregates total orders by **year–month**, revealing clear fluctuat
 **Key takeaway:**  
 
 There is a noticeable dip in April followed by a recovery in May.  
-
 This pattern may reflect seasonal demand shifts, promotional cycles, or operational constraints.  
-
 Understanding these trends helps teams plan inventory, staffing, and production more effectively.
 
 📸 Screenshot
