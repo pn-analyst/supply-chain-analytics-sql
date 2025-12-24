@@ -83,7 +83,9 @@ The top‑ordered items are:
 
 
 **Key takeaway:**  
-Product 1689547 is the highest‑demand SKU with 192 orders, significantly ahead of the rest.
+Demand is heavily concentrated among a small group of products.
+Product 1689547 leads with 192 orders, followed by 1677878 (140 orders) and 1689548 (133 orders).
+All top‑10 SKUs exceed 100 orders, showing that a small set of items drives most of the total order volume
 
 These top products should be prioritized for:
 
@@ -148,7 +150,7 @@ This is significantly higher than other routes such as:
 - PORT09 → PORT06 at $2.84
 
 **Key takeaway:**  
-PORT03 stands out as a high‑cost origin point. If this lane is frequently used, it may be a strong candidate for:
+PORT03 stands out as a high‑cost origin point, nearly double the next‑most‑expensive route. If this lane is frequently used, it may be a strong candidate for:
 
 - Carrier renegotiation
 - Mode shifts (e.g., air → sea)
@@ -187,31 +189,24 @@ Understanding monthly order volume helps with:
 
 💻 SQL Query  
 
-SELECT strftime('%Y-%m', "order_date") AS month,
-       COUNT(*) AS order_count
+SELECT 
+    substr("Order Date", 7, 4) || '-' || substr("Order Date", 4, 2) AS month,
+    COUNT(*) AS order_count
 FROM orders
 GROUP BY month
 ORDER BY month;
 
 
+
 📊 Insight Summary  
 
-This query aggregates total orders by **year–month**, revealing clear fluctuations in demand over time.
-
-
-| Month     | Orders |
-|-----------|--------|
-| 2022-01   | 142    |
-| 2022-02   | 158    |
-| 2022-03   | 165    |
-| 2022-04   | 121    |
-| 2022-05   | 134    |
+The dataset shows 9,215 total orders in May 2013, representing the full available time period in the source data.
+While no multi‑month trend can be observed, this single month reflects a high operational volume, indicating strong demand and significant throughput across the supply chain during this period.
 
 **Key takeaway:**  
 
-There is a noticeable dip in April followed by a recovery in May.  
-This pattern may reflect seasonal demand shifts, promotional cycles, or operational constraints.  
-Understanding these trends helps teams plan inventory, staffing, and production more effectively.
+May 2013 recorded 9,215 orders, highlighting a substantial level of activity.
+If additional months were available, this query would reveal seasonal patterns, growth trends, or demand fluctuations over time.
 
 📸 Screenshot
 
@@ -250,19 +245,32 @@ ORDER BY total_orders DESC
 LIMIT 10;
 
 📊 Insight Summary  
-This query ranks customers by total order count, revealing which accounts drive the highest demand.
+Customer demand is distributed across several high‑volume accounts, with a clear leader.
+Customer V55555555555555_8 placed 976 orders, making them the largest contributor to total order activity.
+The next tier of customers — V555555_6 (762 orders), V55555_2 (758 orders), and V5555555_22 (693 orders) — also represent significant demand.
 
-| Customer ID | Total Orders |
-|-------------|--------------|
-| CUST102     | 54           |
-| CUST087     | 49           |
-| CUST221     | 47           |
-| CUST144     | 45           |
-| CUST199     | 42           |
+The top 10 customers all exceed 350 orders, indicating a broad and active customer base rather than reliance on a single client.
+| Customer               | Total Orders |
+|------------------------|--------------|
+| V55555555555555_8      | 976          |
+| V555555_6              | 762          |
+| V55555_2               | 758          |
+| V5555555_22            | 693          |
+| V5555_33               | 691          |
+| V55555555_7            | 618          |
+| V55555555_5            | 531          |
+| V555555555_27          | 521          |
+| V555555555555555_29    | 385          |
+| V55555_4               | 360          |
+
 
 **Key takeaway:**  
-A small group of customers contributes a disproportionately large share of total orders.  
-These high‑value customers are essential for revenue stability and should be prioritized for service, retention, and forecasting.
+Customer V55555555555555_8 is the top‑volume customer, but demand is well‑distributed across multiple accounts.
+This diversified customer mix reduces dependency risk and highlights opportunities for:
+
+Prioritizing service levels for high‑volume accounts
+Tailoring inventory and fulfillment strategies
+Identifying growth opportunities among mid‑tier customers
 
 📸 Screenshot
 
