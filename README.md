@@ -595,6 +595,9 @@ This project demonstrates:
 ## 👤 Author
 
 Pubudu Narayana
+
 Supply Chain & Data Analyst
+
 GitHub: https://github.com/pn-analyst
+
 LinkedIn: https://www.linkedin.com/in/?
